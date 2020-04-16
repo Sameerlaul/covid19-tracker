@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-2">
+        <div class="card border-danger">
+            <div class="ui red statistic">
+                <div class="label">
+                    <h3 *ngIf="newRecord">New Confirmed</h3>
+                    <h3 *ngIf="!newRecord">Total Confirmed</h3>
+                </div>
+                <div class="value">
+                    {{TotalConfirmed}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-2">
+        <div class="card bg-danger">
+            <div class="ui statistic">
+                <div class="label">
+                    <h3 *ngIf="newRecord">New Deaths</h3>
+                    <h3 *ngIf="!newRecord">Total Deaths</h3>
+                </div>
+                <div class="value">
+                    {{TotalDeaths}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-2 ">
+        <div class="card bg-success">
+            <div class="ui  statistic">
+                <div class="label">
+                    <h3 *ngIf="newRecord">New Recovered</h3>
+                    <h3 *ngIf="!newRecord">Total Recovered</h3>
+                </div>
+                <div class="value">
+                    {{TotalRecovered}}
+                </div>
+            </div>
+        </div>        
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-2">
+        <div class="card bg-warning ">
+            <div class="ui  statistic">
+                <div class="label">
+                    <h3 >Total Active</h3>
+                </div>
+                <div class="value">
+                    {{TotalActive}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

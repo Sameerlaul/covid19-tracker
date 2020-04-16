@@ -19,6 +19,10 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "bootstrap": "^4.4.1",
+    "ng-semantic": "^1.1.13",
+    "ng2-google-charts": "^5.0.0",
+    "ngx-spinner": "^8.1.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

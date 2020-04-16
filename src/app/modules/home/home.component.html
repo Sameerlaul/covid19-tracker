@@ -1,0 +1,29 @@
+<ngx-spinner></ngx-spinner>
+<div class="jumbotron text-center">
+    <h1 class="display-4">COVID19-TRACKER</h1>
+    <app-summary-card [totalConfirmed]="confirmed" [totalDeaths]="deaths"
+        [totalRecovered]="recovered" [totalActive]="active" [newRecord]="newStatus"></app-summary-card>
+    <p>Last updated: <strong>{{lastUpdate | date:'medium'}}</strong></p>
+    <button class="ui secondary basic button mt-1" *ngIf="!newStatus" (click)="updateNewStatus()">Switch to New Records</button>
+    <button class="ui secondary positive button mt-1" *ngIf="newStatus" (click)="updateNewStatus()">Switch to Total Records</button>
+</div>
+
+<div class="ui form ml-5">
+    <div class="inline fields">
+        <label>Case Type:</label>
+        <div class="field" *ngFor="let status of statusArray, let i = index">
+            <div class="ui radio checkbox" >
+                <input [id]="i" type="radio" name="case" [(ngModel)]="index" [value]="i" (click)="initializeCharts(i)" name="status">
+                <label [for]="i">{{status}}</label> 
+            </div> 
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="chartDisplay">
+    <div class="col">
+        <google-chart [data]="columnChart" *ngIf="chartDisplay"></google-chart>
+    </div>
+    <div class="col">
+        <google-chart [data]="pieChart" *ngIf="chartDisplay"></google-chart>
+    </div>
+</div>

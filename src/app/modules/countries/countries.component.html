@@ -1,0 +1,36 @@
+<ngx-spinner></ngx-spinner>
+<div class="jumbotron text-center">
+    <h1 class="display-4">COVID19-COUNTRYWISE-TRACKER</h1>
+    <hr>
+    <div class="mx-auto text-center">
+        <div class="form-group col-md-5 mx-auto">
+            <label for="country">Select Country</label>
+            <select name="country" [(ngModel)]="selectedCountry" (change)="onCountrySelect()" class="form-control"
+                id="country">
+                <option placeholder="Select-Country" [value]="i" *ngFor="let country of countriesData, let i=index">
+                    {{country.Country}}</option>
+            </select>
+        </div>
+    </div>
+
+    <app-summary-card *ngIf="selectedCountry" [totalConfirmed]="confirmed" [totalDeaths]="deaths"
+        [totalRecovered]="recovered" [totalActive]="active" [newRecord]="newStatus"></app-summary-card>
+    <button class="ui secondary basic button mt-1" *ngIf="selectedCountry && !newStatus"
+        (click)="updateNewStatus()">Switch to New Records</button>
+    <button class="ui secondary positive button mt-1" *ngIf="selectedCountry && newStatus"
+        (click)="updateNewStatus()">Switch to Total Records</button>
+</div>
+
+<div class="ui form ml-5" *ngIf="selectedCountry">
+    <div class="inline fields">
+        <label>Case Type:</label>
+        <div class="field" *ngFor="let status of statusArray, let i = index">
+            <div class="ui radio checkbox" >
+                <input [id]="i" type="radio" name="case" [(ngModel)]="index" [value]="i" (click)="getCountryData(i)" name="status">
+                <label [for]="i">{{status}}</label> 
+            </div> 
+        </div>
+    </div>
+</div>
+
+<google-chart [data]="lineChart" *ngIf="selectedCountry"></google-chart>
